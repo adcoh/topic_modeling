@@ -14,7 +14,6 @@ repos:
     rev: v1.1.390
     hooks:
       - id: pyright
-        exclude: ^WCSVNtm/wcsvntm_draft\.py$
 
   # Basic file checks
   - repo: https://github.com/pre-commit/pre-commit-hooks
