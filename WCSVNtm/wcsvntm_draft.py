@@ -149,6 +149,7 @@ def _statistically_validate_word_pairs_polars(
     
     # Generate all word pairs efficiently using a cross join
     # This creates a cartesian product of all words with all words
+    # we
     pairs_df = df.join(df, how='cross', suffix="_2").select([
         pl.col("word").alias("word1"),
         pl.col("word_2").alias("word2"),
