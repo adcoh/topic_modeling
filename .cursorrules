@@ -1,0 +1,51 @@
+# Code Style Preferences and Guidelines
+
+## General Style
+- Use clear, descriptive variable and function names
+- Prefer explicit type hints over implicit typing
+- Use snake_case for variables and functions
+- Use PascalCase for classes
+- Use UPPER_CASE for constants
+
+## Python Specific
+- Use type hints consistently with Python primitives (list[str], dict[str, int], set[str], tuple[int, str], etc.)
+- Prefer str | None style union typing over Union[str, None]
+- Prefer pathlib.Path over os.path for file operations
+- Use f-strings for string formatting
+- Include comprehensive docstrings for all public methods
+- Use proper exception handling with specific exception types
+- Prefer list comprehensions over explicit loops when appropriate
+
+## Documentation
+- Include detailed docstrings for all classes and methods
+- Use Google-style docstring format
+- Document parameters, return types, and exceptions
+- Include usage examples in docstrings when helpful
+
+## Error Handling
+- Use specific exception types rather than generic Exception
+- Provide meaningful error messages
+- Include context in error messages when possible
+
+## File Organization
+- Group related functionality into logical classes
+- Use clear separation between different sections of code
+- Include proper imports at the top of files
+- Use consistent spacing and formatting
+
+## Testing and Validation
+- Include input validation where appropriate
+- Handle edge cases gracefully
+- Provide informative error messages for invalid inputs
+
+## Performance
+- Use efficient data structures when possible
+- Prefer named tuples over typed dicts for memory efficiency
+- Avoid unnecessary computations in loops
+- Consider memory usage for large datasets
+
+## Code Quality
+- Write self-documenting code
+- Keep functions focused on single responsibilities
+- Use meaningful variable names that explain intent
+- Include comments for complex logic when needed
