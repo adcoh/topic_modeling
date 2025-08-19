@@ -1,7 +1,7 @@
 from pathlib import Path
 
 
-class DataReader:
+class DocumentReader:
     """A class for reading data files and converting them to document format."""
 
     def __init__(self, data_dir: str | Path = "data"):

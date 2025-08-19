@@ -9,7 +9,7 @@ from nltk.corpus import stopwords
 from nltk.tokenize import sent_tokenize, word_tokenize
 from scipy.stats import hypergeom
 
-from WCSVNtm.logging_config import get_logger, setup_logging
+from logging_config import get_logger, setup_logging
 
 # Initialize logging
 setup_logging()
@@ -650,13 +650,13 @@ def run_wcsvntm(
 
 if __name__ == "__main__":
     # Configure logging for demo
-    from WCSVNtm.data_io import DataReader
+    from WCSVNtm.document_reader import DocumentReader
 
     setup_logging(level="INFO")
 
     logger.info("Running WCSVNtm demo with sample documents...")
 
-    docs = DataReader().read_all_txt_files()
+    docs = DocumentReader().read_all_txt_files()
 
     try:
         results = run_wcsvntm(docs)
