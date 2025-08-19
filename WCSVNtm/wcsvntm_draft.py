@@ -302,12 +302,18 @@ def _statistically_validate_documents_polars(
         return []
 
     doc_neighbors: dict[str, set] = {d: set(doc_bipartite.neighbors(d)) for d in docs}
+
+    # Check if any document has neighbors (word pairs)
+    if not any(doc_neighbors.values()):
+        logger.info("No word pairs found for documents, skipping document validation")
+        return []
+
     # Note: T will be calculated after filtering for non-zero intersections
     # to ensure Bonferroni correction is based on actual tests performed
 
     # Build document neighbor matrix
     doc_matrix = pl.DataFrame(
-        {"doc": docs, "neighbor_sets": [doc_neighbors[d] for d in docs]}
+        {"doc": docs, "neighbor_sets": [list(doc_neighbors[d]) for d in docs]}
     ).lazy()
 
     # Generate all document pairs efficiently
@@ -535,7 +541,7 @@ def compute_topic_importance(
                 f"Topic {topic_idx} has zero or negative total modularity, assigning equal weights"
             )
             equal_weight: float = 1.0 / len(community) if community else 0.0
-            topic_importance[topic_idx] = {word: equal_weight for word in community}
+            topic_importance[topic_idx] = dict.fromkeys(community, equal_weight)
         else:
             # Normalize by total modularity to get relative importance
             topic_importance[topic_idx] = {
