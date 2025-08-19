@@ -7,6 +7,6 @@ __author__ = "Your Name"
 __email__ = "your.email@example.com"
 
 # Import main functionality
-from .wcsvntm_draft import run_wcsvntm
+from .wcsvntm import run_wcsvntm
 
 __all__ = ["run_wcsvntm"]
